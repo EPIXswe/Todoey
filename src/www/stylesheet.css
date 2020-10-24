@@ -1,0 +1,159 @@
+
+* {
+    /*outline: 1px solid yellow;*/
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    background-color: turquoise;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    color: lightslategray;
+}
+
+#main-box {
+    min-height: 150vh;
+}
+
+/* /////////////// TOPBAR /////////////// */
+
+#topbar {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#topbar > h1 {
+    text-align: center;
+    height: 100%;
+}
+
+#topbar > #inputbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: auto;
+    height: 30px;
+}
+
+#topbar > #inputbox > input {
+    width: auto;
+    height: inherit;
+    border-end-start-radius: 5px;
+    border-start-start-radius: 5px;
+    border: 1px solid black;
+    border-right: none;
+    flex-grow: 10;
+}
+
+
+#topbar > #inputbox > #addbutton {
+    color: white;
+    font-size: 100%;
+    background-color: #4CAF50; /* Green */
+    border-start-end-radius: 5px;
+    border-end-end-radius: 5px;
+    width: 5vw;
+    cursor:pointer;
+    border: none;
+    border: 1px solid black;
+    transition: background-color 0.3s;
+    color: white;
+    flex-grow: 1;
+}
+
+#topbar > #inputbox > #addbutton:hover {
+    background-color: darkolivegreen;
+}
+
+/* /////////////// TODO-LIST /////////////// */
+
+
+/* Contains all the todo-items */
+#todo-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    background-color: skyblue;
+    min-height: 50vh;
+}
+
+/* Contains all the components for a todo-item */
+#todo-list > .todo-item {
+    display: flex;
+    align-items: stretch;
+    flex-basis: min-content; /* (initial size based on content size) */
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: rgba(199, 21, 133, 0.7);
+    width: inherit;
+    height: 5vh;
+    cursor:pointer;
+
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#todo-list > .todo-item > div {
+    margin: 10px;
+}
+
+#todo-list > .todo-item > .checkmarker {
+    display: flex;
+    flex-grow: 0;
+}
+
+#todo-list > .todo-item > .checkmarker > img {
+    width: inherit;
+    height: inherit;
+}
+
+
+#todo-list > .todo-item > .checkmarker:hover {
+    content:url(img/check_box-black-18dp.svg);
+}
+
+#todo-list > .todo-item > .description {
+    flex-grow: 10;
+}
+
+
+
+
+#todo-list > .todo-item > .remove-button {
+    display: flex;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    content: url(img/delete-white-24dp.svg);
+    border-radius: 5px;
+}
+
+#todo-list > .todo-item > .remove-button:hover {
+    content: url(img/delete-black-24dp.svg);
+}
+
+#todo-list > .todo-item > .remove-button > button {
+    vertical-align: middle;
+}
+
+
