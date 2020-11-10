@@ -1,3 +1,41 @@
+:root {
+
+    --color-1: #214252;
+    --color-2: #f05454;
+    --color-3: #af2d2d;
+    --color-4: #ce6262;
+    --color-5: white;
+
+    --color-body:               var(--color-3);
+    --color-topbar:             var(--color-3);
+    --color-add-button:         var(--color-4);
+    --color-add-button-hover:   var(--color-2);
+    --color-list:               var(--color-2);
+    --color-item-hover:         var(--color-2);
+    --color-description:        var(--color-4);
+    --color-input-focus:        var(--color-2);
+
+    --color-uncompleted:        var(--color-4);
+    --color-uncompleted-hover:  #a74f4f;
+    --color-completed:          #ce9c62;
+    --color-completed-hover:    #ac8253;
+
+    --color-text: black;
+
+    --border-thickness: 1px;
+    --border-radius: 5px;
+
+    --box-shadow-value: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    --corner-radius: 10px;
+    --both-corners-top-radius: var(--corner-radius) var(--corner-radius) 0 0;
+
+    --text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    --border: 1px solid black;
+
+    --checkbox-hover-img: url(img/check_box-black-18dp.svg);
+}
+
 
 * {
     /*outline: 1px solid yellow;*/
@@ -10,16 +48,18 @@ body {
     padding-right: 10vw;
     padding-top: 1vh;
     padding-bottom: 1vh;
-    background-color: turquoise;
+    /*background-color: var(--color-body);*/
+    background-image: linear-gradient(120deg, var(--color-body),#a109a7);
     font-family: 'Montserrat', sans-serif;
-}
-
-h1 {
-    color: lightslategray;
+    text-shadow: var(--text-shadow);
+    color: black;
 }
 
 #main-box {
     min-height: 150vh;
+    border: var(--border);
+    border-radius: var(--both-corners-top-radius);
+    box-shadow: var(--box-shadow-value);
 }
 
 /* /////////////// TOPBAR /////////////// */
@@ -29,11 +69,19 @@ h1 {
     padding-bottom: 5vh;
     padding-left: 8vw;
     padding-right: 8vw;
-    background-color: blue;
+    background-color: var(--color-topbar);
     display: flex;
     flex-direction: column;
+    /*
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    */
+    
+    border-radius: var(--both-corners-top-radius);
+
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
 }
 
 #topbar > h1 {
@@ -48,36 +96,45 @@ h1 {
     justify-content: center;
     width: auto;
     height: 30px;
+    border-end-start-radius: 5px;
+    border-start-start-radius: 5px;
+    border-start-end-radius: 5px;
+    border-end-end-radius: 5px;
+    box-shadow: var(--box-shadow-value);
+    transition: background-color 0.2s;
 }
 
 #topbar > #inputbox > input {
-    width: auto;
-    height: inherit;
     border-end-start-radius: 5px;
     border-start-start-radius: 5px;
+    width: auto;
+    height: inherit;
     border: 1px solid black;
     border-right: none;
     flex-grow: 10;
+    background-color: var(--color-description);
+}
+
+#topbar > #inputbox > input:focus {
+    background-color: var(--color-input-focus);
 }
 
 
 #topbar > #inputbox > #addbutton {
-    color: white;
     font-size: 100%;
-    background-color: #4CAF50; /* Green */
+    background-color: var(--color-add-button);
     border-start-end-radius: 5px;
     border-end-end-radius: 5px;
     width: 5vw;
     cursor:pointer;
     border: none;
     border: 1px solid black;
-    transition: background-color 0.3s;
-    color: white;
     flex-grow: 1;
+    transition: inherit;
 }
 
 #topbar > #inputbox > #addbutton:hover {
-    background-color: darkolivegreen;
+    background-color: var(--color-add-button-hover);
 }
 
 /* /////////////// TODO-LIST /////////////// */
@@ -89,7 +146,6 @@ h1 {
     flex-direction: column;
     flex-wrap: nowrap;
     width: 100%;
-    background-color: skyblue;
     min-height: 50vh;
 }
 
@@ -98,18 +154,58 @@ h1 {
     display: flex;
     align-items: stretch;
     flex-basis: min-content; /* (initial size based on content size) */
-    border: 1px solid black;
-    border-collapse: collapse;
-    background-color: rgba(199, 21, 133, 0.7);
+    background-color: var(--color-item);
+    overflow-wrap: break-word;
     width: inherit;
-    height: 5vh;
+    max-width: inherit;
     cursor:pointer;
+
+    border: var(--border);
+    border-top: none;
 
     /* make the list items unselectable */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+#todo-list > .todo-item:hover > .overlay {
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-color:#000;
+    opacity:0.5;
+    border-radius:30px;
+}
+
+.todo-item:hover .checkmarker, .todo-item.hover .checkmarker {
+    content: var(--checkbox-hover-img);
+}
+
+#todo-list > .todo-item:first-child {
+    border: var(--border);
+}
+
+#todo-list > .completed {
+    background-color: var(--color-completed);
+}
+
+#todo-list > .completed:hover {
+    background-color: var(--color-completed-hover);
+}
+
+#todo-list > .uncompleted {
+    background-color: var(--color-uncompleted);
+}
+
+#todo-list > .uncompleted:hover {
+    background-color: var(--color-uncompleted-hover);
+}
+
+
+#todo-list > .todo-item > .completed {
+    background-color: gray;
 }
 
 #todo-list > .todo-item > div {
@@ -126,17 +222,10 @@ h1 {
     height: inherit;
 }
 
-
-#todo-list > .todo-item > .checkmarker:hover {
-    content:url(img/check_box-black-18dp.svg);
-}
-
 #todo-list > .todo-item > .description {
     flex-grow: 10;
+    overflow: auto;
 }
-
-
-
 
 #todo-list > .todo-item > .remove-button {
     display: flex;
@@ -155,5 +244,3 @@ h1 {
 #todo-list > .todo-item > .remove-button > button {
     vertical-align: middle;
 }
-
-
